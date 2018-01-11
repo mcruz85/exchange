@@ -15,4 +15,5 @@ RUN bundle install
 # Copia nosso código para dentro do container
 COPY . .
 # Roda nosso servidor
-CMD ["rails", "server", "-b", "0.0.0.0"]
+#CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD puma -C config/puma.rb
