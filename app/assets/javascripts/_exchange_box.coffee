@@ -14,3 +14,12 @@ $(document).ready ->
           success: (data, text, jqXHR) ->
             $('#result').val(data.value)
         return false;
+
+  $('#currency, #currency_destination, #quantity').change ->
+    currency = $("#currency")
+    currency_destination = $("#currency_destination")
+    quantity = $("#quantity")
+    if (currency.val() && currency_destination.val() && quantity.val())
+      $("#exchange_form").submit()
+    else
+      $("#result").val("")  
