@@ -16,10 +16,18 @@ $(document).ready ->
         return false;
 
   $('#currency, #currency_destination, #quantity').change ->
-    currency = $("#currency")
-    currency_destination = $("#currency_destination")
-    quantity = $("#quantity")
-    if (currency.val() && currency_destination.val() && quantity.val())
+    currency = $("#currency").val()
+    currency_destination = $("#currency_destination").val()
+    quantity = $("#quantity").val()
+    has_values = currency && currency_destination && quantity
+    is_diff = currency != currency_destination
+    if (has_values && is_diff)
       $("#exchange_form").submit()
     else
-      $("#result").val("")  
+      $("#result").val("")
+
+  $('img.icon-reverse').click ->
+    current_currency = $("#currency").val()
+    current_destination = $("#currency_destination").val()
+    $("#currency").val(current_destination)
+    $("#currency_destination").val(current_currency).trigger('change')
